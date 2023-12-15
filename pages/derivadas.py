@@ -9,6 +9,7 @@ import plotly as ply
 import plotly.express as ex
 import plotly.graph_objects as gro
 from plotly.subplots import make_subplots
+from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(page_title='Cálculo III', page_icon=':pencil2:', layout='wide', initial_sidebar_state='collapsed')
 
@@ -25,6 +26,9 @@ st.markdown('''
 #MainMenu, header, footer {visibility: hidden;}
 ''', unsafe_allow_html=True)
 
+if st.button('Regresar'):
+    st.write('Regresando...')
+    switch_page('Main')
 
 def taylor_derivative(f, var, n):
     """
