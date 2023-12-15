@@ -70,9 +70,10 @@ fx = sy.parse_expr(xxs,transformations='all')
 intstrr = ''
 
 symb = st.selectbox('Variable a considerar: ',list(fx.free_symbols))
+order = st.number_input('Orden de la derivada',1,100,value=1)
+method = taylor_derivative(fx,symb,int(order))
 
-
-st.latex(r'\frac{\partial f}{\partial ' + str(symb) +'}'+sy.latex(fx)+' = ' + sy.latex(sy.diff(fx,symb)))
+st.latex(r'\frac{\partial f}{\partial ' + str(symb) +'}'+sy.latex(fx)+' = ' + sy.latex(str(method)))
 
 
 if len(fx.free_symbols)<= 2:
@@ -99,11 +100,5 @@ if len(fx.free_symbols)<= 2:
         st.pyplot(pl)
 
 
-order = st.number_input('Orden de la derivada',1,100,value=1)
-
-method = taylor_derivative(fx,symb,int(order))
 
 
-st.write('El valor de la derivada es:')
-
-st.write("$f'(" + str(fx.free_symbols)+ ")$ = " + str(method) )
